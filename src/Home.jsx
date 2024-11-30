@@ -16,11 +16,18 @@ function Home() {
             Elevate your style with premium accessories designed for the modern
             individual.
           </p>
-          <NavLink to="products">
-            <button className="mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-md font-medium">
-              Explore Products
-            </button>
-          </NavLink>
+          <div className="mt-6 flex justify-center gap-4">
+            <NavLink to="products">
+              <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-md font-medium">
+                Explore Products
+              </button>
+            </NavLink>
+            <NavLink to="signin">
+              <button className="px-6 py-3 bg-gray-700 hover:bg-gray-800 rounded-md font-medium">
+                Sign In
+              </button>
+            </NavLink>
+          </div>
         </div>
       </section>
 
