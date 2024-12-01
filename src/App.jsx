@@ -4,14 +4,17 @@ import Home from "./Home";
 import Products from "./Products";
 import ProductDetail from "./ProductDetail";
 import SignIn from "./SignIn";
+import Cart from "./features/cart/Cart";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<AppLayout />}>
-          <Route path="/" index={<Home />} element={<Home />} />
+          <Route path="/" element={<Home />} />
+          <Route path="cart" element={<Cart />} />
           <Route path="products" element={<Products />} />
+
           <Route path="products/:id" element={<ProductDetail />} />
           <Route path="signin" element={<SignIn />} />
         </Route>

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { addItem } from "./features/cart/cartSlice";
 
 const BASE_URL = "https://api.escuelajs.co/api/v1/products";
 
@@ -7,6 +9,7 @@ function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchProduct() {
@@ -21,6 +24,17 @@ function ProductDetail() {
     }
     fetchProduct();
   }, [id, navigate]);
+
+  function handleAddCart() {
+    if (!product) return; // Ensure product data is available
+    const newItem = {
+      productid: product.id,
+      title: product.title,
+      price: product.price,
+      images: product.images,
+    };
+    dispatch(addItem(newItem)); // Dispatch the addItem action to Redux
+  }
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-8">
@@ -48,6 +62,14 @@ function ProductDetail() {
           <p className="text-2xl text-green-400 font-semibold">
             ${product.price}
           </p>
+          <div className="flex justify-end mt-6">
+            <button
+              onClick={handleAddCart}
+              className="bg-gray-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+            >
+              Add to Cart
+            </button>
+          </div>
         </div>
       ) : (
         <p className="text-center text-gray-400">

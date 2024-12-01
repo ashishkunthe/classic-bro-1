@@ -25,6 +25,14 @@ function Products() {
   return (
     <div className="p-8 bg-gray-900 text-white min-h-screen">
       <h1 className="text-3xl font-bold text-center mb-6">Our Products</h1>
+      <p className="text-center mb-4">
+        <NavLink
+          to="/cart"
+          className="text-blue-400 hover:underline font-medium"
+        >
+          Go to Cart
+        </NavLink>
+      </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((product) => (
           <NavLink to={`${product.id}`}>
